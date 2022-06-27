@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chose your Starting and End Points </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/stylesforlocation.css' %}">
+</head>
+<body>
+    <div class = "main-rectangle">
+        <form action="" method ="POST">
+            {% csrf_token %}
+        <div class = "form-items">
+            <div class = "title">
+                <span>Route Options </span>
+            </div>
+            <div class = "Starting-point">
+                <div class = "Starting-point-title">
+                    <label for="starting-point">Starting point</label>
+                </div>
+                <div class="Starting-point-drodown">
+                    <select name="starting-point" id="starting-point"  >
+                        {% for item in form %} 
+                        <option value="{{item.name}}">{{item.name}}</option>
+                        {% endfor %}
+                      </select>
+                </div>
+            </div>
+            <div class = "Destination-point">
+                <div class = "Destination-point-title">
+                    <label for="destination-point">Destination point</label>
+                </div>
+                <div class="Destination-point-drodown">
+                    <select name="destination-point" id="destination-point">
+                        {% for item in form %} 
+                        <option value="{{item.name}}">{{item.name}}</option>
+                        {% endfor %}
+                      </select>
+                </div>
+            </div>
+            <div class="submit">
+                <input class = "submit-rectangle" type="submit" value="Submit">
+                    
+                </div>
+                
+
+            </div>
+        </div>
+    </form>
+    </div>
+<!--     
+    <form action="" method ="POST">
+        {% csrf_token %}
+        <label for="locations">Choose a car:</label>
+        <select name="locations" id="locations">
+          {% for item in form %} 
+          <option value="{{item.name}}">{{item.name}}</option>
+          {% endfor %}
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+      </form> -->
+</body>
+<script src="{% static 'js/scriptforlocation.js' %}" type="text/javascript"></script>
+</html>

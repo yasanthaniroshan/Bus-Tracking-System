@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+</head>
+
+<body class="body">
+    <div class="bus-details">
+        <div class="bus-information">
+            <div class="route-number">{{bus_details.route_number}} </div>
+            <div class="sub-route">{% if bus_details.sub_route_numer != 0 %}
+                <span>/{{bus_details.sub_route_numer}}</span>
+                {% endif %}
+            </div> <span>|</span>
+            <div class="destination">{{bus_details.destination}}</div><span>-</span>
+            <div class="starting-point">{{bus_details.starting_point}}</div>
+        </div>
+        <div class="Online">
+            <div class="online-rectangle">
+                {% if bus_status.active == true %}
+                <div class="online-circle" id = "online-circle"></div>
+                <div class="online-offline">
+                    <span id = "Online-text">Online</span>
+                </div>
+                    {% else %}
+                    <div class="online-circle" id = "online-circle" style="background: red"></div>
+                <div class="online-offline">
+                    <span id = "Online-text">Offline</span>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+    <div class="google-map">
+        <div class="google-map-embedd">
+
+        </div>
+    </div>
+    <div class="turn-description">
+        <div class="turn-rectangle">
+            <div class="first-row">
+                <span>Last Juction :</span> <span>Galle</span> <span>Next Juction :</span> <span>Mapalagama </span>
+            </div>
+            <div class="first-row">
+                <span>Started at :</span> <span>10:00</span> <span>Depature at:</span> <span>12:00</span>
+            </div>
+
+        </div>
+    </div>
+    <script src="{% static 'js/script.js'%}"></script>
+</body>
+
+</html>

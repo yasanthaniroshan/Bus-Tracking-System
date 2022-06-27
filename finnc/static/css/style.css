@@ -1,0 +1,106 @@
+.body {
+    display: flex;
+    flex-direction: column;
+}
+
+.bus-details {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.bus-information {
+   
+    box-sizing: border-box;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid #000000;
+    border-radius: 20px;
+
+}
+
+.route-number {
+
+    position: relative;
+
+}
+
+.sub-router {
+
+    position: relative;
+
+}
+
+.destination {
+
+    position: relative;
+
+
+}
+
+.online-rectangle {
+    margin-left: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 28px;
+}
+
+.online-circle {
+    height: 20px;
+    width: 20px;
+
+    border-radius: 50%;
+
+    background: #52DE20;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+span{
+    padding: 10px;
+}
+
+.google-map-embedd {
+
+
+    box-sizing: border-box;
+    position: relative;
+    width: 777px;
+    height: 504px;
+    border: 1px solid #000000;
+    align-self: center;
+}
+
+.google-map {
+    display: flex;
+
+    justify-content: center;
+
+}
+
+.turn-description {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0px;
+}
+
+.turn-rectangle {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-self: center;
+    padding: 20px;
+    background: #D9D9D9;
+    border-radius: 52px;
+    border: 1px solid #000000;
+}

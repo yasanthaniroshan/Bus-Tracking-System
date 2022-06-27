@@ -1,0 +1,95 @@
+svg {
+    position: relative;
+    width: 650px;
+ 
+    visibility: hidden;
+    align-self: flex-end;
+    padding-top: 10%;
+}
+
+.whole-page {
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+.animation{
+    display: flex;
+    position:relative;
+    align-self: start;
+}
+
+
+.text-and-button {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+.lets {
+    align-self: flex-start;
+    font-family: 'Abhaya Libre SemiBold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 150px;
+  
+    text-align: center;
+
+    color: #000000;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.test-our-future {
+    font-family: 'Abhaya Libre Medium';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 64px;
+ 
+
+    color: #000000;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.description {
+   
+    font-family: 'Abhaya Libre Medium';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    
+
+    color: #000000;
+}
+
+.button {
+    position: relative;
+    width: 349px;
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.25));
+}
+
+.button-rectangle {
+    position: relative;
+    width: 349px;
+  
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    background: #000000;
+    border-radius: 71px;
+}
+.button-text{
+    text-align: center;
+    align-content: center;
+    font-family: 'Abhaya Libre ExtraBold';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 59px;
+    
+    color: #FFFFFF;
+    
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}

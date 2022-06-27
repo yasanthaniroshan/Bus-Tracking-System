@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/stylefortourdetails.css' %}" type="text/css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="first-column">
+            <div class="bus-details">
+                <div class="first-row-bus-details">
+                    <div class="first-row-bus-details-icon">
+                        <div class="first-row-bus-details-icon-rectangle">
+                            <div class="first-row-bus-details-icon-image">
+                                <img src="{% static 'images/tourdetails/bus-details-bus-name.png' %}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="first-row-bus-details-busname">
+                        <div class="first-row-bus-details-busname-in"><span id="bus_id">{{bus.bus_registration_number}}</span><span> | Travellers</span></div>
+
+                    </div>
+                </div>
+                <div class="second-row-bus-details">
+                    <div class="second-row-bus-details-icon">
+                        <img src="{% static 'images/tourdetails/bus-details-bus.png' %}">
+                    </div>
+                    <div class="second-row-bus-details-route-number">
+                        <span>{{bus.route_number}}</span>
+                    </div>
+                    <div class="second-row-bus-details-subroutenumber">
+                        <span>1</span>
+                    </div>
+                </div>
+                <div class="third-row-bus-details">
+                    <span>{{bus.destination}} - {{bus.starting_point}}</span>
+
+                </div>
+            </div>
+            <div class="Last-Location">
+                <div class="Last-Location-icon">
+                    <img src="{% static 'images/tourdetails/last-location.png' %}">
+                </div>
+
+                <div class="Last-Location-text">
+                    <div class="Last-Location-title">
+                       Last Location
+                    </div>
+                    <div class="Last-Location-location">
+                        <span id= "last_location">{{locations.last_location}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="Next-Location">
+                <div class="Next-Location-icon">
+                    <img src="{% static 'images/tourdetails/next-location.png' %}">
+                </div>
+                <div class="Next-Location-text">
+                    <div class="Next-Location-title">
+                        <span>Next location</span>
+                    </div>
+                    <div class="Next-Location-location">
+                        <span id = "next_location">{{locations.next_location}}</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="Start-at">
+                <div class="Start-at-first-column">
+                    <div class="Start-at-first-column-text">
+                        <span>Start At</span>
+                    </div>
+                    <div class="Start-at-first-column-icon">
+                        <img src="{% static 'images/tourdetails/start-at.png' %}">
+                    </div>
+                    <div class="Start-at-first-column-time">
+                        <span>08:00</span>
+                    </div>
+                </div>
+                <div class="Start-at-second-column">
+                    <div class="Start-at-second-column-text">
+                        <span>You have </span>
+                    </div>
+                    <div class="Start-at-second-column-hours">
+                        <span>20 hours</span>
+                    </div>
+                    <div class="Start-at-second-column-minutes">
+                        <span>20 minutes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="second-column">
+            <div class="first-half">
+                <div class="first-column-inter">
+                    <div class="starting-point">
+                        <div class="starting-point-icon">
+                            <img src="{% static 'images/tourdetails/starting-point.png' %}">
+                        </div>
+                        <div class="starting-point-text">
+                            <div class="starting-point-title">
+                                <span>Starting Point</span>
+                            </div>
+                            <div class="starting-point-starting-point">
+                                <span>{{tour_details.starting_point}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="destination-point">
+                        <div class="destination-point-icon">
+                            <img src="{% static 'images/tourdetails/destination-point.png' %}">
+                        </div>
+                        <div class="destination-point-text">
+                            <div class="destination-point-title">
+                                <span>Destination Point</span>
+                            </div>
+                            <div class="destination-point-destination-point">
+                                <span> {{tour_details.destination_point}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="second-column-inter">
+                    <div id = "live"class="live">
+                        <div class="live-first-row">
+                            <div class="live-circle">
+                                <img src="{% static 'images/tourdetails/circle.png' %}">
+                            </div>
+                            <div class="live-text">
+                                <span id = "live_text">Live</span>
+                            </div>
+                        </div>
+                        <div class="live-second-row">
+                            <div class="live-minutes">
+                                <span>3 minutes ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sheduled">
+                        <div class="sheduled-first-row">
+                            <span>Sheduled</span>
+                        </div>
+                        <div class="sheduled-second-row">
+                            <span>{{time}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="second-half">
+                <div class="second-half-title">
+                    <div class="second-half-title-icon">
+
+                    </div>
+                    <div class="second-half-title-text">
+                        <span>Your Route - {{tour_details.user_location}}</span>
+                    </div>
+                </div>
+                <div class="second-half-line">
+
+                </div>
+                <div class="second-half-map">
+                    <div class="map" id = "map">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZdDhFvl1DzEL8yLQ4EyHPF11nxJyUKF4">
+</script>
+<script src="{% static 'js/scriptfortourdetails.js' %}" type="text/javascript"></script>
+</html>
