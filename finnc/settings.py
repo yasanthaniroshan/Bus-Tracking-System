@@ -68,7 +68,7 @@ ROOT_URLCONF = 'finnc.urls'
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = (
-  'finnc.herokuapp.com',
+  'https://finnc.herokuapp.com',
 )
 
 TEMPLATES = [
