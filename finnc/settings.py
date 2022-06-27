@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'finnc.herokuapp.com',
 ]
-
+CSRF_TRUSTED_ORIGINS=['https://finnc.herokuapp.com']
 
 # Application definition
 
