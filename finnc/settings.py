@@ -28,10 +28,7 @@ SECRET_KEY = 'django-insecure-2m&9(qxi6g(w3=wsuqz0myc3j4yb8x$)0fw+*wg+slce71#wa2
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'd24e-2402-4000-20c1-1f3e-3415-c1b0-b099-e76c.in.ngrok.io',
-    'localhost',
-    '127.0.0.1',
-    'finnc.pagekite.me',
+
     'finnc.herokuapp.com',
 
 
@@ -136,6 +133,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 MEDIA_URL = 'media/'
 
