@@ -23,7 +23,7 @@ def tourdetails(request,tour_id):
     print(time)
     
     relevent_bus = Buses.objects.get(bus_registration_number=bus_id)
-    locations = Turn_of_bus.objects.filter(bus_id=relevent_bus).order_by('current_time')[1]
+    locations = Turn_of_bus.objects.filter(bus_id=relevent_bus).order_by('current_time')[0]
     print(locations.last_location)
     context = {"bus":relevent_bus,"tour_details":tourdetails_object,"time":time,"locations":locations}
     return render(request,'tourdetails.html',context)
