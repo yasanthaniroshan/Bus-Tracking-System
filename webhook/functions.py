@@ -1,4 +1,5 @@
 
+from posixpath import split
 from .models import Buses,Shedule
 from datetime import datetime
 import pytz
@@ -46,14 +47,15 @@ def finding_nearest_shedule(bus_id):
         destinaton_to_starting_point = str(bus_shedule.destinaton_to_starting_point).split(',')
         for time in destinaton_to_starting_point:
             dict_of_shedule_times.update({time_calculater_for_js(time):f"{bus.bus_registration_number}/{time}/0"})
-    print(dict_of_shedule_times) 
+    
     list_of_values = list(dict_of_shedule_times.keys())
     list_of_values_sorted = [int(x)  for x in list_of_values]
     list_of_values_sorted.sort()
-    print(list_of_values_sorted[0])
+  
     nearest_time_and_bus = dict_of_shedule_times[list_of_values_sorted[0]]
     differance = list_of_values_sorted[0]
-    print("nearest sheduled time ",nearest_time_and_bus)
+    time_travel = nearest_time_and_bus.split("/")
+    print("nearest sheduled time ",time_travel[1])
     return f"{nearest_time_and_bus}/{differance}"
 
 def find_last_and_next_locations(coordinates,route_number):
@@ -91,24 +93,24 @@ def find_last_and_next_locations(coordinates,route_number):
     current_location = {"name":nearest_location_1,"distance":distance_list[0]}
     location_two = {"location_before":location_before,"location_next":location_next,"location":current_location}
     distance_between_nearest_locations.append(location_two)
-    print(current_location)
-    print(distance_between_nearest_locations)
-    if len(distance_between_nearest_locations)>2:
+    print("nearest bus stand :",current_location)
+    
+    if len(distance_between_nearest_locations)>4:
         last_data_location_before = distance_between_nearest_locations[0]["location_before"]["distance"]
         last_data_location_next = distance_between_nearest_locations[0]["location_next"]["distance"]
-        new_data_location_before = distance_between_nearest_locations[1]["location_before"]["distance"]
-        new_data_location_next = distance_between_nearest_locations[1]["location_next"]["distance"]
+        new_data_location_before = distance_between_nearest_locations[3]["location_before"]["distance"]
+        new_data_location_next = distance_between_nearest_locations[3]["location_next"]["distance"]
         last_current_location = distance_between_nearest_locations[0]["location"]["distance"]
-        new_data_current_location = distance_between_nearest_locations[1]["location"]["distance"]
+        new_data_current_location = distance_between_nearest_locations[3]["location"]["distance"]
 
         if last_current_location < new_data_current_location :
             next_and_last.update({"next_location":distance_between_nearest_locations[0]["location"]["name"],"last_location":distance_between_nearest_locations[0]["location_before"]["name"],"Started":True})
-        elif last_data_location_before < new_data_location_before and last_data_location_next > new_data_location_next and last_current_location < new_data_current_location :
+        elif new_data_current_location < last_current_location :
             next_and_last.update({"next_location":distance_between_nearest_locations[0]["location_next"]["name"],"last_location":distance_between_nearest_locations[0]["location"]["name"],"Started":True})
         else:
             next_and_last.update({"next_location":"Not -Yet startted","last_location":"Not -Yet startted","Started":False})
         distance_between_nearest_locations.pop(0)
-        print(next_and_last)
+        
     return next_and_last
     
    

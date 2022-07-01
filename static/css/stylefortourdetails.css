@@ -525,6 +525,15 @@ body {
     border: 3px solid #AFA9A9;
     transform: rotate(-0.09deg);
 } */
+.map{
+    
+    height: 400px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+  
+  
+}
 @media (max-width: 925px) {
     .main {
       flex-direction: column;
@@ -535,12 +544,4 @@ body {
         flex-direction: column;
     }
   }
-  .map{
-    
-        height: 400px;
-        /* The height is 400 pixels */
-        width: 100%;
-        /* The width is the width of the web page */
-      
-      
-  }
+ 

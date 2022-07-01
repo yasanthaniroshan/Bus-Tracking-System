@@ -9,6 +9,7 @@ from datetime import datetime
 import json
 from .functions import finding_nearest_shedule,find_last_and_next_locations
 from django.core.exceptions import ObjectDoesNotExist
+from dashboard.models import Infromations_related_to_a_tour,Locations, Statics_Searching
 
 TIME_ZONE = 'Asia/Kolkata'
 
@@ -58,15 +59,22 @@ def distance_Calc(coords_1,coords_2):
 def ActiveOrDisconnected(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        print(data)
         bus_id = data['bus_id']
         tour_id = data['tour_id']
-        print("javascript ",bus_id)
+        print("javascript data recieved :",bus_id)
+    # informations_of_tour = Infromations_related_to_a_tour.objects.get(tour_id=tour_id)
+    statics_of_tour = Statics_Searching.objects.get(pk=tour_id).starting_point
     relevent_bus = Buses.objects.get(bus_registration_number=bus_id)
     current_bus = Active_buses.objects.get(bus_id=relevent_bus)
     last_active_time = current_bus.active_time
     differance = time_calculater_for_js(last_active_time)
-    print(differance)
+    if differance < 60 :
+        time_for_live = f"{differance} Seconds ago"
+    elif differance > 59 and differance < 3600 :
+        time_for_live = f"{round(differance/60)} Minutes ago"
+    elif differance > 3599 :
+        time_for_live = f"{round(differance/3600)} Hours ago"
+    print(time_for_live)
     render_data = {}
     
     if differance > 1200:
@@ -77,13 +85,15 @@ def ActiveOrDisconnected(request):
         current_bus.active = True
         current_bus.save()
         render_data['connected'] = "true"
-    current_details = Turn_of_bus.objects.filter(bus_id=relevent_bus).order_by('current_time')[1]
-    
+    geo_location = Locations.objects.get(name=statics_of_tour).geographic_location
+    current_details = Turn_of_bus.objects.filter(bus_id=relevent_bus).order_by('current_time')[0]
+    render_data["times_ago"] = time_for_live
     render_data["last_location"] = current_details.last_location
     render_data["next_location"] = current_details.next_location
     render_data["current_longitude"] = current_details.current_longitude
     render_data["current_altitude"] = current_details.current_altitude
-
+    render_data["started"] = current_details.started
+    render_data["bus_stand"] = geo_location
     print(render_data)
     
     return JsonResponse(render_data,headers={"access-control-allow-origin" : "*", 
@@ -100,7 +110,7 @@ def iotdevice(request):
         connected_status = request.headers["connected"]
         json_converted = json.load(request)
         location = ((json_converted["altitude"]),(json_converted["longitude"]))
-       
+        print(f"My ID - {bus_id} | message - '{json_converted['massage']}'")
         relevent_bus = Buses.objects.get(bus_registration_number = bus_id)
         activeordisconected = Active_buses.objects.get(bus_id=relevent_bus)
         activeordisconected.active = True
@@ -109,7 +119,7 @@ def iotdevice(request):
             
         registration_number,time,start_to_end,difference = str(details).split("/")
         
-        print(location,bus_id,bus_route,connected_status)
+        print(f"my current location - {location} | connected {connected_status}")
         try:
             current_turn = Turn_of_bus.objects.get(bus_id=relevent_bus)
         except ObjectDoesNotExist:
@@ -130,7 +140,7 @@ def iotdevice(request):
         data_about_locations =  find_last_and_next_locations(location,bus_route)
         current_turn.bus_id = relevent_bus
         current_turn.current_time = datetime.now(pytz.timezone(TIME_ZONE)).strftime("%H:%M:%S")
-        if len(last_records_location)> 2:
+        if len(last_records_location)> 4:
             current_turn.current_altitude = json_converted["altitude"]
             current_turn.current_longitude = json_converted["longitude"]
             current_turn.starting_time = activeordisconected.starting_time
@@ -140,11 +150,10 @@ def iotdevice(request):
             current_turn.save()        
         if(len(last_records_location)>4):
             distance = float(distance_Calc(last_records_location[len(last_records_location) - 4],location))
-            print(distance)    
+              
             if distance < 0.5 :
                 last_records_location.pop(0)
 
-        print(last_records_location)
         return HttpResponse("Webhook received!")
 
     if request.method == "GET":
@@ -169,8 +178,11 @@ def iotdevice(request):
         data_values = list(int(x) for x in all_shedules.values())
         data_to_send_server = data_keys[data_values.index(time_in_seconds)]
         print(bus_id,data_to_send_server)
-        
-        
+        activeordisconected = Active_buses.objects.get(bus_id=relevent_bus)
+        activeordisconected.active = True
+        activeordisconected.active_time = datetime.now(pytz.timezone(TIME_ZONE)).strftime("%H:%M:%S")
+        activeordisconected.starting_time = data_to_send_server
+        activeordisconected.save()
         return HttpResponse(data_to_send_server)
 
 

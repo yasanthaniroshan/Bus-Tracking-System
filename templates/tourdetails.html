@@ -111,7 +111,7 @@
                                 <span>Starting Point</span>
                             </div>
                             <div class="starting-point-starting-point">
-                                <span>{{tour_details.starting_point}}</span>
+                                <span id = "starting-point-name">{{tour_details.starting_point}} </span>
                             </div>
                         </div>
                     </div>
@@ -141,13 +141,13 @@
                         </div>
                         <div class="live-second-row">
                             <div class="live-minutes">
-                                <span>3 minutes ago</span>
+                                <span id = "live-time">3 minutes ago</span>
                             </div>
                         </div>
                     </div>
-                    <div class="sheduled">
+                    <div class="sheduled" id="sheduled">
                         <div class="sheduled-first-row">
-                            <span>Sheduled</span>
+                            <span id = "sheduled-text">Sheduled</span>
                         </div>
                         <div class="sheduled-second-row">
                             <span>{{time}}</span>
@@ -161,7 +161,7 @@
 
                     </div>
                     <div class="second-half-title-text">
-                        <span>Your Route - {{tour_details.user_location}}</span>
+                        <span>Nearest Bus Halt - {{tour_details.user_location}}</span>
                     </div>
                 </div>
                 <div class="second-half-line">

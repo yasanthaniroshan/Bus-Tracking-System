@@ -1,6 +1,7 @@
 from pyexpat import model
 from django.db import models
 
+
 class Buses(models.Model):
     bus_registration_number = models.CharField(max_length=32)
     route_number = models.IntegerField()
@@ -41,3 +42,4 @@ class Active_buses(models.Model):
     starting_time = models.CharField(max_length=100)
     def __str__(self):
         return str(self.bus_id)
+

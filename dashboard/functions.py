@@ -47,13 +47,14 @@ def getextractlocation(starting_point,destination_point):
         print(nearest_location_2)
 
         locations_order_object = Location_Order.objects.get(route_number=route_number).list_of_locations.split(",")
-   
+        startcoordinates = Locations.objects.get(name=nearest_location_1).geographic_location
+        endcoordinates = destination_point
         if(locations_order_object.index(nearest_location_1)>locations_order_object.index(starting_point)):
             startingpointtodestination = True
         else:
             startingpointtodestination = False
 
-        data_to_pass = {"destination_point":nearest_location_1,"starting_point":starting_point,"userlocation":starting_point,"startingpointtodestination":startingpointtodestination,"route_number":route_number}
+        data_to_pass = {"destination_point":nearest_location_1,"starting_point":starting_point,"userlocation":starting_point,"startingpointtodestination":startingpointtodestination,"route_number":route_number,"startcoordinates":startcoordinates,"endcoordinates":endcoordinates,"needdirections":True}
 
         return data_to_pass
     elif "," in starting_point:
@@ -84,13 +85,14 @@ def getextractlocation(starting_point,destination_point):
         print(nearest_location_2)
 
         locations_order_object = Location_Order.objects.get(route_number=route_number).list_of_locations.split(",")
-       
+        startcoordinates = starting_point
+        endcoordinates = Locations.objects.get(name= nearest_location_1).geographic_location
         if(locations_order_object.index(nearest_location_1)>locations_order_object.index(destination_point)):
             startingpointtodestination = False
         else:
             startingpointtodestination =True
 
-        data_to_pass = {"destination_point":destination_point,"starting_point":nearest_location_1,"userlocation":starting_point,"startingpointtodestination":startingpointtodestination,"route_number":route_number}
+        data_to_pass = {"destination_point":destination_point,"starting_point":nearest_location_1,"userlocation":starting_point,"startingpointtodestination":startingpointtodestination,"route_number":route_number,"startcoordinates":startcoordinates,"endcoordinates":endcoordinates,"needdirections":True}
         
         return data_to_pass
 
@@ -105,7 +107,7 @@ def getextractlocation(starting_point,destination_point):
         else:
             startingpointtodestination =True
 
-        data_to_pass = {"destination_point":destination_point,"starting_point":starting_point,"userlocation":starting_point,"startingpointtodestination":startingpointtodestination,"route_number":route_number}
+        data_to_pass = {"destination_point":destination_point,"starting_point":starting_point,"userlocation":starting_point,"startingpointtodestination":startingpointtodestination,"route_number":route_number,"startcoordinates":"False","endcoordinates":"False","needdirections":False}
         
         return data_to_pass
 

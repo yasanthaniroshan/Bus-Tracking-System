@@ -20,11 +20,12 @@ def tourdetails(request,tour_id):
     tourdetails_object = Statics_Searching.objects.get(pk=tour_id)
     bus_and_time = finding_nearest_shedule(tourdetails_object.route_number,tourdetails_object.starting_point_to_destination_point)
     bus_id,time = bus_and_time.split("/")
-    print(time)
+    print("nearest time",time)
     
     relevent_bus = Buses.objects.get(bus_registration_number=bus_id)
     locations = Turn_of_bus.objects.filter(bus_id=relevent_bus).order_by('current_time')[0]
     print(locations.last_location)
+   
     context = {"bus":relevent_bus,"tour_details":tourdetails_object,"time":time,"locations":locations}
     return render(request,'tourdetails.html',context)
 
@@ -58,6 +59,9 @@ def gettinglocations(request):
         new_data.starting_point_to_destination_point = extract_location["startingpointtodestination"]
         new_data.route_number = extract_location["route_number"]
         new_data.user_location = extract_location["userlocation"]
+        new_data.startcoordinates = extract_location["startcoordinates"]
+        new_data.endcoordinates = extract_location["endcoordinates"]
+        new_data.needdirections = extract_location["needdirections"]
         new_data.save()
         return redirect('tourdetails',new_data.key_id)
 
