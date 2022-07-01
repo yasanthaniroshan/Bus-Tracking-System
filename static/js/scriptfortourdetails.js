@@ -101,7 +101,7 @@ setInterval(async function () {
     let data = dataToSend();
     let responce_data = await fetch(url, {
         method: 'POST',
-        mode: 'cors', // or 'PUT'
+        mode: 'no-cors', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
             "Access-Control-Allow-Origin": "*",
