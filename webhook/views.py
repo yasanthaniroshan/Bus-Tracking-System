@@ -97,7 +97,7 @@ def ActiveOrDisconnected(request):
     print(render_data)
     
     return JsonResponse(render_data,headers={"access-control-allow-origin" : "*", 
-"access-control-allow-credentials" : "true" })
+"access-control-allow-credentials" : "true","Content-Type": "application/json"})
     
 
 
