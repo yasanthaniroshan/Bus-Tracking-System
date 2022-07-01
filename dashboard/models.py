@@ -1,5 +1,4 @@
-from random import choices
-from attr import fields
+
 from django.db import models
 from django.forms import CharField, ModelForm
 from webhook.models import Buses,Turn_of_bus
