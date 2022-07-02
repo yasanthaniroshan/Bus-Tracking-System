@@ -13,7 +13,8 @@ let longitude = 0;
 let latitude = 0;
 let device_latitude = 0;
 let device_longitude = 0;
-
+const hours_free = document.getElementById("hours-free");
+const minutes_free = document.getElementById("minutes-free");
 
 
 const url = "http://127.0.0.1:80/api/js/";

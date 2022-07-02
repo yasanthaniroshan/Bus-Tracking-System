@@ -24,7 +24,7 @@ headers = {}
 
 def googledistance(startingpoint,userlocation):
     if startingpoint == "Not -Yet startted":
-        return 0
+        return {"hours":0,"minutes":0}
     origin = Locations.objects.get(name=startingpoint).geographic_location
     destination = userlocation
     url = f"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&mode={mode}&alternatives=false&avoid=tolls&key={key}"
