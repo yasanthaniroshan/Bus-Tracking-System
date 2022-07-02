@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 
 from .models import Locations,Statics_Searching
 
+
 def extract_location(extractlocation):
     if extractlocation == None:
         return redirect('location')

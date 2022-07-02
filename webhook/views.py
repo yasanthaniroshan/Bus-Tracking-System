@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import geopy.distance
-
+import requests
 from .models import Buses, Shedule,Active_buses, Turn_of_bus
 import pytz,json
 from datetime import datetime
@@ -14,6 +14,32 @@ from dashboard.models import Infromations_related_to_a_tour,Locations, Statics_S
 TIME_ZONE = 'Asia/Kolkata'
 
 last_records_location = []
+
+mode = "DRIVING"
+key = "AIzaSyAZdDhFvl1DzEL8yLQ4EyHPF11nxJyUKF4"
+
+
+payload={}
+headers = {}
+
+def googledistance(startingpoint,userlocation):
+    if startingpoint == "Not -Yet startted":
+        return 0
+    origin = Locations.objects.get(name=startingpoint).geographic_location
+    destination = userlocation
+    url = f"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&mode={mode}&alternatives=false&avoid=tolls&key={key}"
+    response = requests.request("GET", url, headers=headers, data=payload)
+    jsoned_data = json.loads(response.text)
+    duration =  jsoned_data["routes"][0]["legs"][0]["duration"]["text"]
+    list_duration = duration.split(" ")
+    if len(list_duration) == 2:
+        hours = 0
+        minutes = list_duration[0]
+    elif len(list_duration) == 4:
+        hours = list_duration[0]
+        minutes = list_duration[2]
+    return {"hours":hours,"minutes":minutes}
+
 
 def time_calculater(time_of_data): 
     time_now_object = datetime.now(pytz.timezone(TIME_ZONE)).strftime("%H:%M:%S")
@@ -102,9 +128,14 @@ def ActiveOrDisconnected(request):
     started_difference = time_calculater_for_started(current_bus.starting_time)
     if started_difference > 0:
         render_data["started"] = "false"
+        current_details.started = False
     else:
         render_data["started"] = "true"
+        current_details.started = True
+    
+
     print("Started or not",render_data["started"])
+    time_remaining = googledistance(current_details.next_location,geo_location)
     render_data["times_ago"] = time_for_live
     render_data["last_location"] = current_details.last_location
     render_data["next_location"] = current_details.next_location
@@ -112,6 +143,9 @@ def ActiveOrDisconnected(request):
     render_data["current_altitude"] = current_details.current_altitude
    
     render_data["bus_stand"] = geo_location
+    render_data["hours_free"] = time_remaining["hours"]
+    render_data["minutes_free"] = time_remaining["minutes"]
+    current_details.save()
     print(render_data)
     
     return JsonResponse(render_data,headers={"access-control-allow-origin" : "*", 
