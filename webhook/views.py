@@ -100,7 +100,7 @@ def ActiveOrDisconnected(request):
     geo_location = Locations.objects.get(name=statics_of_tour).geographic_location
     current_details = Turn_of_bus.objects.filter(bus_id=relevent_bus).order_by('current_time')[0]
     started_difference = time_calculater_for_started(current_bus.starting_time)
-    if started_difference > 0:
+    if started_difference < 0:
         render_data["started"] = "false"
     else:
         render_data["started"] = "true"
