@@ -155,11 +155,11 @@ setInterval(async function () {
     console.log(times);
     if(data_f["minutes_free"]!=0)
     {
-        minutes_free.textContent = data_f["minutes_free"] + "minutes";
+        minutes_free.textContent = data_f["minutes_free"] + " minutes";
     }
     if(data_f["hours_free"]!=0)
     {
-         hours_free.textContent = data_f["hours_free"] + "hours";
+         hours_free.textContent = data_f["hours_free"] + " hours";
     }
     
    
