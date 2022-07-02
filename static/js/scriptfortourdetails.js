@@ -16,6 +16,8 @@ let device_longitude = 0;
 const bus_stop = document.getElementById("starting-point-name");
 let data_f;
 let times = 0;
+const hours_free = document.getElementById("hours-free");
+const minutes_free = document.getElementById("minutes-free");
 
 const url = "https://finnc.herokuapp.com/api/js/";
 
@@ -151,4 +153,8 @@ setInterval(async function () {
     }
     times = times + 1;
     console.log(times);
+    
+    minutes_free.textContent = data_f["minutes_free"];
+    hours_free.textContent = data_f["hours_free"];
+    
 }, 10000);
