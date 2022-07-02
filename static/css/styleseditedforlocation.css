@@ -129,3 +129,16 @@ body {
     align-items: center;
 
 }
+
+@media (max-width: 780px) {
+    .Starting-point {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+    }
+        .Destination-point {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+    }
+  }
