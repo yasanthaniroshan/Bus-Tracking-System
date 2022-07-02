@@ -142,7 +142,7 @@ setInterval(async function () {
     console.log(data_f["current_longitude"]);
     console.log(data_f["current_longitude"]);
     marker_of_bus.setPosition(location_of_bus);
-    map.setCenter(location_of_bus);
+    
     let bus_loc = data_f["bus_stand"].split(",");
     
     
