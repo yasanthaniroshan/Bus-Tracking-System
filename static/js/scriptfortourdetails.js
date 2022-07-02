@@ -154,7 +154,7 @@ setInterval(async function () {
     times = times + 1;
     console.log(times);
     
-    minutes_free.textContent = data_f["minutes_free"];
-    hours_free.textContent = data_f["hours_free"];
+    console.log(data_f["minutes_free"]);
+    console.log(data_f["hours_free"]);
     
 }, 10000);
