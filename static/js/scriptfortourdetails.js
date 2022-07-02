@@ -153,6 +153,16 @@ setInterval(async function () {
     }
     times = times + 1;
     console.log(times);
+    if(data_f["minutes_free"]!=0)
+    {
+        minutes_free.textContent = data_f["minutes_free"];
+    }
+    if(data_f["hours_free"]!=0)
+    {
+         hours_free.textContent = data_f["hours_free"];
+    }
+    
+   
     
     console.log(data_f["minutes_free"]);
     console.log(data_f["hours_free"]);
