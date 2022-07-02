@@ -38,7 +38,9 @@
                         <span>{{bus.route_number}}</span>
                     </div>
                     <div class="second-row-bus-details-subroutenumber">
-                        <span>1</span>
+                        {% if bus.sub_route_numer != 0%}
+                        <span>{{bus.sub_route_numer}}</span>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="third-row-bus-details">
