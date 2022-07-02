@@ -17,9 +17,9 @@ const bus_stop = document.getElementById("starting-point-name");
 let data_f;
 let times = 0;
 
-const url = "https://finnc.pagekite.me/api/js/";
+const url = "https://finnc.herokuapp.com/api/js/";
 
-const icon = "https://finnc.pagekite.me/static/images/tourdetails/bus-stop.png";
+const icon = "https://finnc.herokuapp.com/static/images/tourdetails/bus-stop.png";
 
 
 
