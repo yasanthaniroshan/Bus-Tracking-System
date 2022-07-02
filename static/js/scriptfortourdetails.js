@@ -126,7 +126,7 @@ setInterval(async function () {
     if (data_f["next_location"] != "Not -Yet startted") {
         next_location.textContent = data_f["next_location"];
     }
-    if(data_f["started"] = "true")
+    if(data_f["started"] == "true")
     {
         sheduled.style.background = '#449CED';
         sheduled_text.textContent = "Started";
