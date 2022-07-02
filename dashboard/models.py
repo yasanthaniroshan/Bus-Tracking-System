@@ -45,7 +45,7 @@ class Statics_Searching(models.Model):
     startcoordinates = models.CharField(max_length=100,default="False")
     endcoordinates = models.CharField(max_length=100,default="False")
     needdirections = models.BooleanField(default=False)
-
+    how_much_of_time = models.CharField(max_length=100,default="o mins")
     def __str__(self):
         return f'{self.route_number} - {self.key_id}'
 

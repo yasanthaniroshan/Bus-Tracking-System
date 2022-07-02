@@ -42,6 +42,18 @@ def time_calculater_for_js(time_of_data):
     time_difference = total_seconds_data - total_seconds_now
     
     return abs( time_difference)
+def time_calculater_for_started(time_of_data): 
+    time_now_object = datetime.now(pytz.timezone(TIME_ZONE)).strftime("%H:%M:%S")
+    time_now = str(time_now_object).split(":")
+    time_data = str(time_of_data).split(":")
+    if len(time_data) == 2 :
+        total_seconds_data = 3600*int(time_data[0])+60*int(time_data[1])
+    elif len(time_data)==3:
+        total_seconds_data = 3600*int(time_data[0])+60*int(time_data[1])+int(time_data[2])
+    total_seconds_now = 3600*int(time_now[0])+60*int(time_now[1])+int(time_now[2]) 
+    time_difference = total_seconds_data - total_seconds_now
+    
+    return  time_difference
 
 
 def distance_Calc(coords_1,coords_2): 
@@ -87,6 +99,11 @@ def ActiveOrDisconnected(request):
         render_data['connected'] = "true"
     geo_location = Locations.objects.get(name=statics_of_tour).geographic_location
     current_details = Turn_of_bus.objects.filter(bus_id=relevent_bus).order_by('current_time')[0]
+    started_difference = time_calculater_for_started(current_bus.starting_time)
+    if started_difference > 0:
+        render_data["started"] = "false"
+    else:
+        render_data["started"] = "true"
     render_data["times_ago"] = time_for_live
     render_data["last_location"] = current_details.last_location
     render_data["next_location"] = current_details.next_location
