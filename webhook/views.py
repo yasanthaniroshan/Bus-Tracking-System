@@ -104,6 +104,7 @@ def ActiveOrDisconnected(request):
         render_data["started"] = "false"
     else:
         render_data["started"] = "true"
+    print("Started or not",render_data["started"])
     render_data["times_ago"] = time_for_live
     render_data["last_location"] = current_details.last_location
     render_data["next_location"] = current_details.next_location
