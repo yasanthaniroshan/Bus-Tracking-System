@@ -138,6 +138,8 @@ setInterval(async function () {
     location_of_bus = new google.maps.LatLng(data_f["current_longitude"], data_f["current_altitude"]);
     let location = getLocation();
     location_of_me = new google.maps.LatLng(latitude,longitude);
+    console.log("dta");
+    console.log(data_f["current_longitude"]);
     marker_of_bus.setPosition(location_of_bus);
     map.setCenter(location_of_bus);
     let bus_loc = data_f["bus_stand"].split(",");
