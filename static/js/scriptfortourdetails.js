@@ -106,12 +106,12 @@ setInterval(async function () {
             'Content-Type': 'application/json',
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": true,
-            "Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS"
+            "Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS",
         },
         body: JSON.stringify(data),
-    })
+    });
     data_f = await responce_data.json();
-    console.log(data_f['connected'])
+    console.log(data_f['connected']);
 
     if (data_f['connected'] == "false") {
         online_or_offline.textContent = "Offline";
