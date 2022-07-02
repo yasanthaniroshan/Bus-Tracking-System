@@ -102,7 +102,7 @@ setInterval(async function () {
     let responce_data = await fetch(url, {
         method: 'POST', 
         headers: {
-            'Content-Type': 'application/json',
+            
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Credentials': true,
         },
