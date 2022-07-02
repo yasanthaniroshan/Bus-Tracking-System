@@ -135,7 +135,7 @@ setInterval(async function () {
     console.log(data_f["times_ago"]);
     device_latitude = data_f["current_altitude"];
     device_longitude = data_f["current_longitude"];
-    location_of_bus = new google.maps.LatLng(data_f["current_altitude"],data_f["current_altitude"]);
+    location_of_bus = new google.maps.LatLng(data_f["current_altitude"],data_f["current_longitude"]);
     let location = getLocation();
     location_of_me = new google.maps.LatLng(latitude,longitude);
     console.log("dta");
