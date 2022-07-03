@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surevey</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/tripetto-runner-foundation"></script>
+<script src="https://cdn.jsdelivr.net/npm/tripetto-runner-chat"></script>
+<script src="https://cdn.jsdelivr.net/npm/tripetto-services"></script>
+<script>
+var tripetto = TripettoServices.init({ token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNmhxODRVUGthSWJVLzhWc1VCVUNsVjZTRHd1RFZjQVhyRHhrZTNjcjBidz0iLCJkZWZpbml0aW9uIjoiV2xsdWxOZkJGQVJPanVxanp6Zk1xU1VuRGprTFZVaFBkNlQ5djlDZEV2Zz0iLCJ0eXBlIjoiY29sbGVjdCJ9.Y5Kk9JvRA5yi5oM-lf69SgglBpD0BBI2BpyoZW-Sqc4" });
+
+TripettoChat.run({
+    element: document.body, /* Or supply your own element here */
+    definition: tripetto.definition,
+    styles: tripetto.styles,
+    l10n: tripetto.l10n,
+    locale: tripetto.locale,
+    translations: tripetto.translations,
+    attachments: tripetto.attachments,
+    onSubmit: tripetto.onSubmit,
+    snapshot: tripetto.snapshot,
+    onPause: tripetto.onPause,
+    persistent: true
+});
+</script>
+</body>
+</html>

@@ -72,4 +72,5 @@ def gettinglocations(request):
     return render(request,'gettingDandS.html',{"form":getting_data})
 
 
-    
+def survey(request):
+    return render(request,'survey.html')
