@@ -101,10 +101,10 @@ WSGI_APPLICATION = 'finnc.wsgi.application'
 DATABASES = {
 'default': {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'd66t3is63uancb',
-    'USER': 'qkllrqtdxcyngq',
-    'PASSWORD': '691a719d6230daf7b93e0fbcb42643492ccc54a2eea03bec265c1f68bc80d001',
-    'HOST': 'ec2-3-222-74-92.compute-1.amazonaws.com',
+    'NAME': 'dbqicnnt3fpnlt',
+    'USER': 'sohpbobbshuqae',
+    'PASSWORD': '8075223abe3506704483cd623a2ecc92cb88129375ff55c44f4bda0956a9c435',
+    'HOST': 'ec2-34-235-198-25.compute-1.amazonaws.com',
     'PORT': '5432',
 }
 }
