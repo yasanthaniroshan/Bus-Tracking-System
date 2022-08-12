@@ -98,7 +98,7 @@ def ActiveOrDisconnected(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         bus_id = data['bus_id']
-        tour_id = data['tour_id']
+        tour_id = data['tour_id'][:-1]
         print("javascript data recieved :",bus_id)
     # informations_of_tour = Infromations_related_to_a_tour.objects.get(tour_id=tour_id)
     statics_of_tour = Statics_Searching.objects.get(pk=tour_id).starting_point
