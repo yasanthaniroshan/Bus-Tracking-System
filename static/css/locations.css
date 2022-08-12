@@ -1,0 +1,223 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Akshar';
+    font-style: normal;
+    font-weight: 400;
+}
+
+.ovelay {
+    display: flex;
+
+
+}
+
+.image {
+    margin-top: 5vh;
+    margin-left: 60vw;
+    max-height: 90vh;
+    width: 30vw;
+
+
+}
+
+.rectangle {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 10;
+    opacity: 0.99;
+    width: 50vw;
+    height: 28vw;
+    background: #272727;
+    box-shadow: 0.150vw 0.150vw 0.1vw 0.1vw rgba(0, 0, 0, 0.25);
+    border-radius: 2vw;
+}
+
+.title {
+    display: flex;
+    font-size: 3vw;
+    margin-top: 1vw;
+    color: #ffffff;
+    align-self: center;
+}
+
+.line {
+    border: 0.2vw solid #FFFFFF;
+    width: 40vw;
+    margin-top: 0.5vw;
+    margin-bottom: 1.2vw;
+    align-self: center;
+    background-color: #FFFFFF;
+    border-radius: 0.2vw;
+}
+
+
+
+.starting-point {
+    display: flex;
+    flex-direction: row;
+    height: 3.5vw;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    border: 0.2vw solid #FFFFFF;
+    border-radius: 2vw;
+    margin: 1vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    margin-bottom: 2vw;
+}
+
+.starting-point-logo {
+    flex: 1;
+}
+
+.starting-point-text {
+    font-size: 2vw;
+    flex: 4;
+}
+
+.starting-point-select {
+    flex: 4;
+}
+
+.starting-point-input-box {
+    border: 0.1vw solid #272727;
+    
+    border-radius: 2vw;
+    font-family: 'Akshar';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+    width: 18vw;
+    text-align: center;
+    margin: 0.5vw;
+    margin-bottom: none;
+    margin-right: 1vw;
+    outline: none;
+}
+
+.starting-point-datalist {
+
+    position: absolute;
+    
+    font-family: 'Akshar';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5vw;
+    max-height: 10vw;
+    width: 18vw;
+    border-top: none;
+    background-color: #FFFFFF;
+    margin: none;
+   
+    overflow-y: auto;
+}
+
+option {
+    cursor: pointer;
+    
+}
+option:hover{
+    background-color: #747474;
+}
+.button-rectangle{
+    display: flex;
+    justify-content: center;
+}
+
+.button{
+    
+    background: #272727;
+    text-align: center;
+    align-self: center;
+    width: 10vw;
+    color: #FFFFFF;
+border: 0.1vw solid #FFFFFF;
+border-radius: 2vw;
+font-size: 2vw;
+}
+.button:hover{
+    width: 11vw;
+    font-size: 2.1vw;
+    background: #747474;
+}
+.button:active{
+    width: 11vw;
+    background: #FFFFFF;
+    color: #272727;
+}
+
+@media (max-width: 621px)
+{
+    .rectangle {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        z-index: 10;
+        opacity: 0.99;
+        width: 60vw;
+        height: 30vw;
+        background: #272727;
+        box-shadow: 0.150vw 0.150vw 0.1vw 0.1vw rgba(0, 0, 0, 0.25);
+        border-radius: 2vw;
+    } 
+    .image {
+       
+        margin-left: 80vw;
+        max-height: 90vh;
+        width: 30vw;
+    
+    
+    }
+    .starting-point-datalist {
+
+        position: absolute;
+        
+        font-family: 'Akshar';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.5vw;
+        max-height: 10vw;
+        width: 18vw;
+        border-top: none;
+        background-color: #FFFFFF;
+        margin: none;
+       
+        overflow-y: auto;
+    }
+    .starting-point-input-box {
+        border: 0.1vw solid #272727;
+        display: flex;
+        align-items: center;
+        justify-self: center;
+        border-radius: 2vw;
+        font-family: 'Akshar';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 2vw;
+        width: 15vw;
+        text-align: center;
+        margin: 0.5vw;
+        margin-bottom: none;
+        margin-right: 0.5vw;
+        outline: none;
+    }
+    .starting-point {
+        display: flex;
+        flex-direction: row;
+        height: 4vw;
+        justify-content: center;
+        align-items: center;
+        background: #FFFFFF;
+        border: 0.2vw solid #FFFFFF;
+        border-radius: 2vw;
+        margin: 1vw;
+        margin-left: 3vw;
+        margin-right: 3vw;
+        margin-bottom: 2vw;
+    }
+    
+}

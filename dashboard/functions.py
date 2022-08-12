@@ -1,7 +1,9 @@
 
-from webhook.views import time_calculater
+from time import localtime
+from unicodedata import name
+from webhook.views import time_calculater,googledistance
 from webhook.models import Buses,Shedule
-from .models import Location_Order,Locations
+from .models import Location_Order,Locations, Statics_Searching
 from geopy import distance
 
 def distance_Calc(coords_1,coords_2): 
@@ -121,7 +123,7 @@ def finding_nearest_shedule(route_number,startingpointtodestination):
     list_of_values =[]
     list_of_values_sorted = []
     all_buses_with_route_number = Buses.objects.filter(route_number=route_number)
-    
+   
     if startingpointtodestination == True:
         for bus in all_buses_with_route_number:
             bus_shedule = Shedule.objects.get(bus_id = bus)
@@ -151,3 +153,71 @@ def finding_nearest_shedule(route_number,startingpointtodestination):
 
 
 
+def finding_how_many_available_times(route_number,startingpointtodestination,key_id):
+    dict_of_shedule_times = {}
+    list_of_values =[]
+    list_of_values_sorted = []
+    available_shedules = {}
+    all_buses_with_route_number = Buses.objects.filter(route_number=route_number)
+    
+    
+    
+    user_location = Statics_Searching.objects.get(key_id=key_id).starting_point
+    geolocation = Locations.objects.get(name=user_location).geographic_location
+
+    if startingpointtodestination == True:
+
+
+        bus_starting_point = Buses.objects.get(route_number=route_number).starting_point
+        
+        time_for_tour = googledistance(bus_starting_point,geolocation)
+        print(time_for_tour)
+        time_in_seconds = 3600*int(time_for_tour["hours"])+60*int(time_for_tour["minutes"])
+
+        for bus in all_buses_with_route_number:
+            bus_shedule = Shedule.objects.get(bus_id = bus)
+            starting_to_destination = str(bus_shedule.starting_point_to_destination).split(',')
+            for time in starting_to_destination:
+                dict_of_shedule_times.update({time_calculater(time):f"{bus.bus_registration_number}/{time}"})
+        
+        list_of_values = list(dict_of_shedule_times.keys())
+        list_of_values_sorted = [int(x) for x in list_of_values if int(x) > time_in_seconds]
+        list_of_values_sorted.sort()
+        nearest_time_and_bus = dict_of_shedule_times[list_of_values_sorted[0]]
+        for shedule in list_of_values_sorted:
+            
+            # details = ''
+            # details = str(dict_of_shedule_times[shedule]).split('/')
+        
+            # data = {"bus-id":details[0],"time":details[1]}
+            # print(type(data))
+            available_shedules.update({f"{list_of_values_sorted.index(shedule)}":f"{dict_of_shedule_times[shedule]}"})
+        
+        
+    elif startingpointtodestination == False:
+
+        bus_starting_point = Buses.objects.get(route_number=route_number).destination
+
+        time_for_tour = googledistance(bus_starting_point,geolocation)
+        print(time_for_tour)
+        time_in_seconds = 3600*int(time_for_tour["hours"])+60*int(time_for_tour["minutes"])
+
+        for bus in all_buses_with_route_number:
+            bus_shedule = Shedule.objects.get(bus_id = bus)
+            destinaton_to_starting_point = str(bus_shedule.destinaton_to_starting_point).split(',')
+            for time in destinaton_to_starting_point:
+                dict_of_shedule_times.update({time_calculater(time):f"{bus.bus_registration_number}/{time}"})
+        
+        list_of_values = list(dict_of_shedule_times.keys())
+        list_of_values_sorted = [int(x)  for x in list_of_values if int(x) > time_in_seconds]
+        list_of_values_sorted.sort()
+        nearest_time_and_bus = dict_of_shedule_times[list_of_values_sorted[0]]
+        for shedule in list_of_values_sorted:
+             
+            # details = ''
+            # details = str(dict_of_shedule_times[shedule]).split('/')
+        
+            # data = {"bus-id":details[0],"time":details[1]}
+            # print(type(data))
+            available_shedules.update({f"{list_of_values_sorted.index(shedule)}":f"{dict_of_shedule_times[shedule]}"})
+    return available_shedules

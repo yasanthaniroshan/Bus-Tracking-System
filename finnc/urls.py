@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from dashboard.views import frontpage,gettinglocations,tourdetails,survey
+from dashboard.views import frontpage,gettinglocations,tourdetails,survey,avaialableshedules
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +24,8 @@ urlpatterns = [
     path('api/',include('api.urls')),
     path('',frontpage,name="frontpage"),
     path('location/',gettinglocations,name="location"),
-    path('tour-details/<int:tour_id>',tourdetails,name="tourdetails"),
+    path('available-shedules/<int:tour_id>',avaialableshedules,name="available-shedules"),
+    path('tour-details/<int:tour_id_with_number>',tourdetails,name="tourdetails"),
     path('survey/',survey,name="survey"),
+    # path('bus-details/<str:bus_id>',)
 ]

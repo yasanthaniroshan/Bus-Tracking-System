@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shedules</title>
+    <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/shedules.css'%}">
+</head>
+<body class="body">
+    <div class="main">
+        <div class="title">
+            <span>Available Shedules</span>
+        </div>
+        <div class = "line"></div>
+        <div class="table-header">
+            <span class="header-time">Start At</span>
+            <span class="header-starting-point">Starting Point</span>
+            <span class="header-destination-point">Destination Point</span>
+            <span class="header-bus-id">Bus ID</span>
+            <span class="header-view">View</span>
+        </div>
+        <div class = "line-2"></div>
+        {% for item in data %}
+        <div class="item">
+            <div class="item-time">
+                <span>{{ item.time }}</span>
+            </div>
+            <div class="item-starting-point">
+                <span>{{ item.startingpoint }}</span>
+            </div>
+            <div class = "item-destination-point">
+                <span>{{ item.destination }}</span>
+            </div>
+            <div class="item-bus-id">
+                <span>{{ item.bus_id }}</span>
+            </div>
+            <a href="{% url 'tourdetails' item.url_slug %}"  style="text-decoration: none;">
+                <div class="item-button">
+                    <span>View</span>
+                </div>
+            </a>
+            
+        </div>
+        {% endfor %}
+        <!-- <div class="item">
+            <div class="item-time">
+                <span>08:00</span>
+            </div>
+            <div class="item-starting-point">
+                <span>Galle</span>
+            </div>
+            <div class = "item-destination-point">
+                <span>Mapalagama</span>
+            </div>
+            <div class="item-bus-id">
+                <span>ND-4523</span>
+            </div>
+            <div class="item-other-button">
+                <span>View</span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-time">
+                <span>08:00</span>
+            </div>
+            <div class="item-starting-point">
+                <span>Galle</span>
+            </div>
+            <div class = "item-destination-point">
+                <span>Mapalagama</span>
+            </div>
+            <div class="item-bus-id">
+                <span>ND-4523</span>
+            </div>
+            <div class="item-other-button">
+                <span>View</span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-time">
+                <span>08:00</span>
+            </div>
+            <div class="item-starting-point">
+                <span>Galle</span>
+            </div>
+            <div class = "item-destination-point">
+                <span>Mapalagama</span>
+            </div>
+            <div class="item-bus-id">
+                <span>ND-4523</span>
+            </div>
+            <div class="item-other-button">
+                <span>View</span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-time">
+                <span>08:00</span>
+            </div>
+            <div class="item-starting-point">
+                <span>Galle</span>
+            </div>
+            <div class = "item-destination-point">
+                <span>Mapalagama</span>
+            </div>
+            <div class="item-bus-id">
+                <span>ND-4523</span>
+            </div>
+            <div class="item-other-button">
+                <span>View</span>
+            </div>
+        </div> -->
+    </div>
+</body>
+</html>

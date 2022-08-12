@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/locations.css' %}">
+    <title>Location</title>
+</head>
+
+<body>
+    <div class="main">
+        
+        <div class="overlay">
+            <img src="{% static 'images/locations.svg' %}" alt="" class="image">
+        </div>
+        <div class="rectangle">
+            
+            <div class="title">
+                <span>Getting Locations</span>
+            </div>
+            <div class="line"></div>
+            <form action="" method="POST">
+                {% csrf_token %}
+            <div class="starting-point">
+                
+                <div class="starting-point-logo">
+                    <div class="starting-point-image">
+                        
+                    </div>
+                </div>
+                <div class="starting-point-text">
+                    <span>Starting-Point</span>
+                </div>
+                <div class="starting-point-select">
+                    <input autocomplete="off" role="combobox" list="" id="startingpoint" name="startingpoint"
+                        placeholder="Select your location" class="starting-point-input-box" >
+                    <!-- Its important that you keep list attribute empty to hide the default dropdown icon and the browser's default datalist -->
+
+                    <datalist id="startingpointdatalist" role="listbox"  class="starting-point-datalist" >
+                        <option value="My Location">My Location</option>
+                        {% for item in form %} 
+                        <option value="{{item.name}}">{{item.name}}</option>
+                        {% endfor %}
+                    </datalist>
+                </div>
+            </div>
+            <div class="starting-point">
+                <div class="starting-point-logo">
+                    <div class="starting-point-image">
+                        
+                    </div>
+                </div>
+                <div class="starting-point-text">
+                    <span>Destination-Point</span>
+                </div>
+                <div class="starting-point-select">
+                    <input autocomplete="off" role="combobox" list="" id="destinationpoint" name="destinationpoint"
+                        placeholder="Select your location" class="starting-point-input-box">
+                    <!-- Its important that you keep list attribute empty to hide the default dropdown icon and the browser's default datalist -->
+
+                    <datalist id="destinationpointdatalist" role="listbox"  class="starting-point-datalist" name = "destinationpoint">
+                        <option value="My location">My Location</option>
+                        {% for item in form %} 
+                        <option value="{{item.name}}">{{item.name}}</option>
+                        {% endfor %}
+                    </datalist>
+                </div>
+            </div>
+            <div class="button-rectangle">
+                <input class = "button" type="submit" value="Submit">
+            </div>
+                
+            </form>
+        </div>
+
+    
+    </div>
+    <script type="text/javascript" src="{% static 'js/locations.js' %}"></script>
+</body>
+
+</html>

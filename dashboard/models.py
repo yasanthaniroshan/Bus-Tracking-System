@@ -46,6 +46,7 @@ class Statics_Searching(models.Model):
     endcoordinates = models.CharField(max_length=100,default="False")
     needdirections = models.BooleanField(default=False)
     how_much_of_time = models.CharField(max_length=100,default="o mins")
+    times_of_shedules = models.CharField(max_length=100,default="")
     def __str__(self):
         return f'{self.route_number} - {self.key_id}'
 
