@@ -99,15 +99,16 @@ WSGI_APPLICATION = 'finnc.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-'default': {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'dbqicnnt3fpnlt',
-    'USER': 'sohpbobbshuqae',
-    'PASSWORD': '8075223abe3506704483cd623a2ecc92cb88129375ff55c44f4bda0956a9c435',
-    'HOST': 'ec2-34-235-198-25.compute-1.amazonaws.com',
-    'PORT': '5432',
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',  # Or 'django.db.backends.mysql', 'django.db.backends.postgresql', etc.
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),  # Change the database name and path as needed
+        'USER': '',        # The database user (not needed for SQLite)
+        'PASSWORD': '',    # The database password (not needed for SQLite)
+        'HOST': '',        # The database host (leave empty for localhost)
+        'PORT': '',        # The database port (leave empty for the default)
+    }
 }
-}
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
