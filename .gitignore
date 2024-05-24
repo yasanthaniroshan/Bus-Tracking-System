@@ -30,9 +30,12 @@ develop-eggs/
 dist/
 downloads/
 eggs/
+bin/
+*.cfg
 .eggs/
 lib/
 lib64/
+lib64
 parts/
 sdist/
 var/
