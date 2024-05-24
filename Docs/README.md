@@ -78,6 +78,8 @@ This project is a real-time bus tracking system built using Django, incorporatin
 
 ## Project Structure
 
+![Project Structure](../Docs/frontpage.png)
+
 The project is structured into two primary Django applications:
 
 **1.  *webhook* Application:**
@@ -99,14 +101,22 @@ The project is structured into two primary Django applications:
    - **Key Components**
       - **tourdashboard View**
         
+        ![tourdashboard](../Docs/dashboard.png)
+
         Displays real-time information about a specific bus, including its location, status, last/next stops, and estimated arrival times.
       - **tourdetails View**
+
         
          Shows comprehensive details about a particular tour, including its scheduled times, available buses, and relevant information for commuters. 
+
        - **gettinglocations View**
         
+          ![gettinglocations](../Docs/GettingData.png)
+
           Allows users to input their starting point and destination. It then processes this information to provide relevant bus schedules and routes.
       - **avaialableshedules View**
+
+        ![avaialableshedules](./AvailableShedules.png)
 
           Displays a list of available bus schedules that match the user's selected route and desired time frame. 
   - **Functions:**
@@ -227,6 +237,17 @@ The system's data flow can be illustrated as follows:
    ```bash
    python manage.py runserver
    ```
+
+## Reviews and Feedback
+
+Here are some reviews and feedback from users who have interacted with the Bus Tracking System:
+
+[![reviews](https://img.youtube.com/vi/x9iSuZdkvp4/0.jpg)](https://www.youtube.com/watch?v=x9iSuZdkvp4)
+
+
+[Here](https://tripetto.app/run/AJSCCAHERA) is the feedback form that used to collect feedback from users:
+
+![Feedback](../Docs/Feedback.png)
 
 ## Future Enhancements
 
