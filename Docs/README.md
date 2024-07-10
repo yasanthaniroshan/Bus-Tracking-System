@@ -189,8 +189,8 @@ The system's data flow can be illustrated as follows:
   - **GPS Module:**  
   
     NEO-6M GPS Module module connected to the ESP32, enabling it to determine its geographical location (latitude and longitude). 
-
-
+    
+  - ![PCB Design](Bus_Tracking_System.png)
 
 - **Arduino Libraries:**
   - **ArduinoJson:** 
